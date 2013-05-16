@@ -34,6 +34,12 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        
+var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+
+scanner.scan( function (result) { 
+    alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); }, 
+    function (error) { alert("Scanning failed: " + error); } );
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
